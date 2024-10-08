@@ -1,8 +1,12 @@
 # 自動でコミットするスクリプト
 #!/bin/zsh
+#!/bin/zsh
 
 # 自動コミットとプッシュを行う関数
 commit_and_push() {
+    # 現在の作業ディレクトリを保存
+    local original_dir=$(pwd)
+
     # Gitリポジトリのパスを指定（例: ~/my-zsh-config）
     local repo_path=~/my-zsh-config
 
@@ -27,6 +31,8 @@ commit_and_push() {
     # 変更があるかどうかを確認
     if git diff --cached --quiet; then
         echo "No changes to commit."
+        # 元のディレクトリに戻る
+        cd "$original_dir"
         return 0
     fi
 
@@ -41,6 +47,11 @@ commit_and_push() {
         echo "Changes successfully pushed to the repository."
     else
         echo "Failed to push changes to the repository."
+        # 元のディレクトリに戻る
+        cd "$original_dir"
         return 1
     fi
+
+    # 最後に元のディレクトリに戻る
+    cd "$original_dir"
 }
