@@ -5,7 +5,7 @@ commit_and_push() {
   local original_dir=$(pwd)
   
   # リポジトリのパスを定義
-  local repo_path="$HOME/."
+  local repo_path="$HOME/my-zsh-config"
   
   # 現在のタイムスタンプを取得
   local timestamp=$(date +"%Y-%m-%d %H:%M:%S")
