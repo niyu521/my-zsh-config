@@ -1,1 +1,1 @@
-source ~./zshrc executed at 2024-10-09 02:30:50
+source ~/.zshrc executed at 2024-10-09 02:34:55
