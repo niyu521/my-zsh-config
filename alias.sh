@@ -8,6 +8,7 @@ alias cb='cd ..'
 alias codi='cd ~/Documents/02_Code'
 alias o='open .'
 alias mft='cd ~/Documents/02_Code/project/matsufes2024_test'
+alias maf='cd ~/Documents/02_Code/project/Matsufes2024'
 alias write='cat >'
 alias show='show_all_contents'
 
