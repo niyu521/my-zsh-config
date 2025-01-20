@@ -24,6 +24,11 @@ alias univ='cd ~/Documents/02_Code/univ'
 alias genpro='cd ~/Documents/02_Code/univ/genpro'
 
 
+# genpro
+alias gp='./gp'
+alias lpp='./lpp'
+
+
 
 # write() {
 #   local filename=$1
