@@ -13,6 +13,9 @@ alias write='cat >'
 alias show='show_all_contents'
 alias cs='cursor .'
 alias doc='cd ~/Documents/02_Code/document/univ_class'
+alias univ='cd ~/Documents/02_Code/univ'
+alias genpro='cd ~/Documents/02_Code/univ/genpro'
+
 
 
 # write() {
