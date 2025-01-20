@@ -26,10 +26,11 @@ alias genpro='cd ~/Documents/02_Code/univ/genpro'
 alias cl='clear'
 
 
+
 # genpro
 alias gp='./gp'
 alias lpp='./lpp'
-
+alias lldb='./lldb'
 
 
 # write() {
