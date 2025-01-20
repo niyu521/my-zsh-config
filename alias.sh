@@ -31,6 +31,7 @@ alias cl='clear'
 alias gp='./gp'
 alias lpp='./lpp'
 alias ll='./lldb'
+alias mc='make clean'
 
 
 # write() {
