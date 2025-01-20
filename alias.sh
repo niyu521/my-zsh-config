@@ -30,7 +30,7 @@ alias cl='clear'
 # genpro
 alias gp='./gp'
 alias lpp='./lpp'
-alias lldb='./lldb'
+alias ll='./lldb'
 
 
 # write() {
