@@ -2,10 +2,11 @@
 
 alias c='code'
 alias cc='code .'
+alias csc='cursor .'
 cs() {
   cursor "$@"
 }
-alias csc='cursor .'
+
 
 alias l='cd ~/Documents/02_Code/document/univ_class && ls'
 alias zho='code ~/my-zsh-config && code -r ~/.zshrc'
