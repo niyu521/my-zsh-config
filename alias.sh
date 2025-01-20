@@ -2,11 +2,8 @@
 
 alias c='code'
 alias cc='code .'
+alias cs='cursor'
 alias csc='cursor .'
-cs() {
-  local dirname=$1
-  cursor "$dirname"
-}
 
 
 alias l='cd ~/Documents/02_Code/document/univ_class && ls'
