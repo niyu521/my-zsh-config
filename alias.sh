@@ -1,6 +1,12 @@
 # aliasを記述するファイル。.zshrc に記述すると長くなるため、分割している。
 
-alias c='code .'
+alias c='code'
+alias cc='code .'
+cs() {
+  cursor "$@"
+}
+alias csc='cursor .'
+
 alias l='cd ~/Documents/02_Code/document/univ_class && ls'
 alias zho='code ~/my-zsh-config && code -r ~/.zshrc'
 alias zhs='source ~/.zshrc && commit_and_push'
@@ -11,7 +17,7 @@ alias mft='cd ~/Documents/02_Code/project/matsufes2024_test'
 alias maf='cd ~/Documents/02_Code/project/Matsufes2024'
 alias write='cat >'
 alias show='show_all_contents'
-alias cs='cursor .'
+
 alias doc='cd ~/Documents/02_Code/document/univ_class'
 alias univ='cd ~/Documents/02_Code/univ'
 alias genpro='cd ~/Documents/02_Code/univ/genpro'
