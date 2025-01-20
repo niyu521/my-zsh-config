@@ -4,7 +4,8 @@ alias c='code'
 alias cc='code .'
 alias csc='cursor .'
 cs() {
-  cursor "$@"
+  local dirname=$1
+  cursor "$dirname"
 }
 
 
