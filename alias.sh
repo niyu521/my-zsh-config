@@ -25,6 +25,11 @@ alias genpro='cd ~/Documents/02_Code/univ/genpro'
 
 alias cl='clear'
 
+mcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+
 
 
 # genpro
