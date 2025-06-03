@@ -20,6 +20,7 @@ alias write='cat >'
 alias show='show_all_contents'
 
 alias doc='cd ~/Documents/02_Code/document/univ_class'
+alias bs='cd ~/Documents/02_Code/document/bs'
 alias univ='cd ~/Documents/02_Code/univ'
 alias genpro='cd ~/Documents/02_Code/univ/genpro'
 
