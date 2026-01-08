@@ -1,51 +1,68 @@
 #!/usr/bin/env bash
 set -e
 
-# 対象フォルダ（引数がなければカレント）
-TARGET_DIR="${1:-.}"
+# --------------------
+# options
+# --------------------
+RENAME=false
+START=1
+PREFIX="IMG_"
+DIGITS=4
+TARGET_DIR="."
 
-# 絶対パス化
-TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
-OUTPUT_DIR="$TARGET_DIR/output"
-
-mkdir -p "$OUTPUT_DIR"
-
-shopt -s nullglob
-
-# 対応拡張子（大文字・小文字両対応）
-FILES=(
-  "$TARGET_DIR"/*.heic "$TARGET_DIR"/*.HEIC
-  "$TARGET_DIR"/*.heif "$TARGET_DIR"/*.HEIF
-  "$TARGET_DIR"/*.jpg  "$TARGET_DIR"/*.JPG
-  "$TARGET_DIR"/*.jpeg "$TARGET_DIR"/*.JPEG
-  "$TARGET_DIR"/*.png  "$TARGET_DIR"/*.PNG
-  "$TARGET_DIR"/*.webp "$TARGET_DIR"/*.WEBP
-  "$TARGET_DIR"/*.tif  "$TARGET_DIR"/*.TIF
-  "$TARGET_DIR"/*.tiff "$TARGET_DIR"/*.TIFF
-  "$TARGET_DIR"/*.bmp  "$TARGET_DIR"/*.BMP
-  "$TARGET_DIR"/*.gif  "$TARGET_DIR"/*.GIF
-)
-
-count=0
-
-for file in "${FILES[@]}"; do
-  base="$(basename "$file")"
-  name="${base%.*}"
-  out="$OUTPUT_DIR/$name.png"
-
-  # 同名回避
-  if [[ -e "$out" ]]; then
-    i=1
-    while [[ -e "$OUTPUT_DIR/${name}_${i}.png" ]]; do
-      i=$((i+1))
-    done
-    out="$OUTPUT_DIR/${name}_${i}.png"
-  fi
-
-  echo "Converting: $base -> $(basename "$out")"
-  sips -s format png "$file" --out "$out" >/dev/null
-  count=$((count+1))
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -r) RENAME=true; shift ;;
+    -s) START="$2"; shift 2 ;;
+    *) TARGET_DIR="$1"; shift ;;
+  esac
 done
 
-echo "Done. Converted: $count files"
-echo "Output folder: $OUTPUT_DIR"
+# --------------------
+# paths
+# --------------------
+TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
+OUTPUT_DIR="$TARGET_DIR/output"
+mkdir -p "$OUTPUT_DIR"
+
+# --------------------
+# counter
+# --------------------
+index=0
+converted=0
+
+# --------------------
+# main
+# --------------------
+find "$TARGET_DIR" -maxdepth 1 -type f \
+  \( -iname "*.heic" -o -iname "*.heif" \
+     -o -iname "*.jpg" -o -iname "*.jpeg" \
+     -o -iname "*.png" \
+     -o -iname "*.webp" \
+     -o -iname "*.tif" -o -iname "*.tiff" \
+     -o -iname "*.bmp" \
+     -o -iname "*.gif" \) \
+  | LC_ALL=C sort \
+  | while IFS= read -r file; do
+
+      if $RENAME; then
+        num=$((START + index))
+        printf -v out_name "%s%0*d.png" "$PREFIX" "$DIGITS" "$num"
+      else
+        base="$(basename "$file")"
+        name="${base%.*}"
+        out_name="$name.png"
+      fi
+
+      out_path="$OUTPUT_DIR/$out_name"
+
+      echo "Converting: $(basename "$file") -> $out_name"
+      sips -s format png "$file" --out "$out_path" >/dev/null
+
+      index=$((index + 1))
+      converted=$((converted + 1))
+done
+
+echo "Done."
+echo "Converted: $converted files"
+echo "Output: $OUTPUT_DIR"
