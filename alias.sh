@@ -31,7 +31,8 @@ mcd() {
   mkdir -p "$1" && cd "$1"
 }
 
-
+# tool
+alias img2png='./img2png.sh'
 
 
 # genpro
