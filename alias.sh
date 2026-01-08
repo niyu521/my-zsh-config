@@ -32,7 +32,7 @@ mcd() {
 }
 
 # tool
-alias img2png='~/my-zsh-config/img2png.sh'
+alias img2png='bash ~/my-zsh-config/img2png.sh'
 
 
 # genpro
