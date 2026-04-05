@@ -41,6 +41,9 @@ alias lpp='./lpp'
 alias ll='./lldb'
 alias mc='make clean'
 
+# ssh
+alias vpsaos='ssh vps-ai-ops-support'
+
 
 # write() {
 #   local filename=$1
