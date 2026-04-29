@@ -45,6 +45,10 @@ alias mc='make clean'
 alias vpsaos='ssh vps-ai-ops-support'
 
 
+# whisper
+alias transcribe="~/whisper-tool/transcribe.sh"
+
+
 # write() {
 #   local filename=$1
 #   cat > "$filename"
